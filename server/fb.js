@@ -117,7 +117,7 @@ async function answerMessage(received_message, ctx) {
     } 
     let type = received_message.attachments[0].type;
     if (type === 'image') {
-      return {'text': "That's a giggly picture."}
+      return {'text': "That's a giggly picture!😜🙈"}
     } else if(type === "video") {
       return {'text': "That's a very cool video. Let's get Giggly"}
     }
@@ -129,7 +129,7 @@ async function answerMessage(received_message, ctx) {
   console.log('text ' + text);
   if(ctx.state == 'hello') {
     ctx.state = 'start'
-    text = "Hey! Hope you have a spooky and fun time this Halloween! 👻 🎃🎉 \n Are you in the mood for some video game streams or a cool video?"
+    text = "Hey, it's Giggly here!🐒\n\nHope you have a spooky and fun time this Halloween!👻🎃🎉\n\nAre you in the mood for some video game streams or a cool video?"
   } else if(ctx.state == 'video') {
     let lookup = {
       'baby-shark': 'https://www.facebook.com/VT/videos/536146063482335/',
@@ -164,7 +164,7 @@ async function answerMessage(received_message, ctx) {
           "payload": {
             "template_type": "generic",
             "elements": [{
-              "title": "It seems like you like those games. Which do you want to watch?",
+              "title": "So, I see you want to watch video games. Which video game do you want to watch? 🙉",
               "subtitle": "Tap to choose your video.",
               "buttons": [
                 {
@@ -199,7 +199,7 @@ async function answerMessage(received_message, ctx) {
           "payload": {
             "template_type": "generic",
             "elements": [{
-              "title": "What should we watch today?",
+              "title": "What video would you like to watch?🧐",
               "subtitle": "Tap to choose your video.",
               "buttons": [
                 {
@@ -235,7 +235,7 @@ async function answerMessage(received_message, ctx) {
       'pubg':'esl_csgo'
     }
     let channel = lookup[text];
-    text = channel+'\nIf you wanna send a message to the streamer, just type or send a voice message\nTo exit say "bye"'
+    text = 'If you wanna send a message to the streamer, just type or send a voice message.\n\nTo exit this mode, just say "bye".👍🏻'
     request({
       "uri": "http://localhost:3000/add_twitch?channel="+channel
     }, (err, res, body) => {
@@ -263,7 +263,7 @@ async function answerMessage(received_message, ctx) {
       ctx.channel.disconnect();
     } else {
       ctx.channel.say(ctx.channel_name, text);
-      text = 'We’ve sent them a pigeon with your message attached. They’ll be receiving the duo shortly.'
+      text = 'We’ve sent them a pigeon with your message attached. They’ll be receiving it shortly.😛'
     }
   }
 
