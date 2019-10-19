@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/app.js",
+    "start": "node server/ws-server.js",
     "dev": "webpack --mode development && node server/app.js",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,7 +21,9 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-messenger-customer-chat": "^0.7.2",
-    "tmi.js": "^1.5.0"
+    "socket.io": "^2.3.0",
+    "tmi.js": "^1.5.0",
+    "ws": "^7.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",

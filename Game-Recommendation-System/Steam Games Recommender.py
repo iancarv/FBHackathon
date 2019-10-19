@@ -11,7 +11,6 @@ import csv
 import pandas as pd
 import numpy as np
 import matplotlib as plt
-from tqdm import tqdm
 import pickle
 import random 
 
@@ -65,7 +64,6 @@ user_id_groups_play = steam_data_play.groupby("user_id")
 # In[107]:
 
 
-print(user_id_groups_play.get_group(43955374))
 
 
 # In[108]:
@@ -87,7 +85,7 @@ try:
     with open('beautiful_df.pkl','rb') as f:
         beautiful_df = pickle.load(f)
 except:
-    for i in tqdm(range(0, len(unique_ids),1)):
+    for i in range(0, len(unique_ids),1):
         user_id = unique_ids[i]
         user_group = user_id_groups_play.get_group(user_id)
         for game_name in user_group['game']:
@@ -101,10 +99,8 @@ except:
 
 # Some Statistics
 average_games_played = np.mean(beautiful_df.sum(axis=1).values)
-print(average_games_played)
 
 mean_hours_played = steam_data_play['play_time'].mean()
-print(mean_hours_played)
 
 
 # ####  Selecting test sets
@@ -119,7 +115,6 @@ except:
     n = 0
     test_users = []
     num_test_users = 1000
-    pbar = tqdm(total = num_test_users)
     while(n < num_test_users):
         sample = np.random.choice(len(unique_ids),1, replace=False)
         test_user_id = beautiful_df.index[sample][0]
@@ -128,8 +123,6 @@ except:
             if test_user_id not in test_users:
                 test_users.append(test_user_id)
                 n+=1
-                pbar.update(1)
-    pbar.close()
     with open('test_users.pkl', 'wb') as f:
         pickle.dump(test_users, f)
 
@@ -155,8 +148,8 @@ def alterData(data, test_users, hidden, user_id_groups):
                 data[test_games_purchased[game]][test_user_id] = 0
                 games.append(test_games_purchased[game])
             else:
-                print(data[test_games_purchased[game]][test_user_id])
-                print(test_games_purchased[game],test_user_id, picked_games)
+            
+            
                 raise Exception('This game should be purchased. Try recomputing beautiful_df')
         games_altered.append(games)
     return games_altered 
@@ -205,7 +198,7 @@ except:
 def sparsify(s,u,vt):
     thresholdCheck = list(np.around(s,0) < 101)
     thresholdIndex = thresholdCheck.index(True)
-    print(thresholdIndex)
+
     sparsed_s = np.diag(s[:thresholdIndex])
     sparsed_vt = vt[:thresholdIndex,:]
     sparsed_u = u [:,:thresholdIndex]
@@ -273,7 +266,6 @@ def recommend_games(user_id, num_recommendations, predictions, user_id_groups_pl
 recommendations = recommend_games(43955374, 5, predictions, user_id_groups)
 #recommendations = recommend_games(43955374, 5, predictions)#, user_id_groups)
 
-print('We are recommending following game: '+ (", ").join(recommendations))
 
 
 # ## 4. Testing
@@ -294,7 +286,7 @@ def getRecall(games_altered, test_users, data, num_recommendations, predictions,
         matches = 0
         test_user_id = test_users[i]
         recommendations = recommend_games(user_id, num_recommendations, predictions, user_id_groups_play)
-#         print(games_altered[i],recommendations)
+#        
 #         break
         for game in games_altered[i]:
             if game in recommendations:
@@ -307,7 +299,6 @@ def getRecall(games_altered, test_users, data, num_recommendations, predictions,
 # In[ ]:
 
 
-print(getRecall(games_altered, test_users, beautiful_df, 100, predictions,user_id_groups))
 
 
 # In[ ]:

@@ -1,11 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>ern-stack-boilerplate</title>
+  <title>WS example</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://embed.twitch.tv/embed/v1.js"></script>
 </head>
+
 <body>
-<noscript>You need to enable JavaScript to run this app.</noscript>
-<div id="root"></div>
-<script type="text/javascript" src="main.js"></script></body>
+    <div id="twitch-embed"></div>
+  <script>
+
+  // Extremely simplified here, no error handling or anything
+document.body.onload = function() {
+    var socket = io.connect('ws://cbc77bcc.ngrok.io');
+
+    socket.on("add_twitch", (data) => {
+        new Twitch.Embed("twitch-embed", {
+        width: 854,
+        height: 480,
+        channel: data.channel
+      });
+	})
+}
+  </script>
+</body>
 </html>

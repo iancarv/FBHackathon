@@ -51,7 +51,7 @@ router.post('/webhook', (req, res) => {
         // Get the sender PSID
         let sender_psid = webhook_event.sender.id;
         if (ctx[sender_psid] == undefined) {
-          ctx[sender_psid] = {'state':'start'};
+          ctx[sender_psid] = {'state':'hello'};
         }
   
         sendSenderAction(sender_psid, 'mark_seen');
@@ -69,6 +69,7 @@ router.post('/webhook', (req, res) => {
     } catch (error) {
       
     }
+    console.log('EVENT_RECEIVED')
     res.status(200).send('EVENT_RECEIVED');
     
     // Return a '200 OK' response to all events
@@ -105,6 +106,7 @@ router.get('/webhook', (req, res) => {
 
 async function answerMessage(received_message, ctx) {
   let text;
+  
   if (received_message.text) {  
     text = received_message.text;
   } else if (received_message.attachments) {
@@ -114,17 +116,20 @@ async function answerMessage(received_message, ctx) {
     } 
     let type = received_message.attachments[0].type;
     if (type === 'image') {
-      return "That's a giggly picture."
+      return {'text': "That's a giggly picture."}
     } else if(type === "video") {
-      return "That's a very cool video. Let's get Giggly"
+      return {'text': "That's a very cool video. Let's get Giggly"}
     }
 
     text = await s2t.convertToText(attachment_url)
   }
   text = text.toLowerCase();
+  console.log('TEXT: ' + text);
   console.log('text ' + text);
-
-  if(ctx.state == 'video') {
+  if(ctx.state == 'hello') {
+    ctx.state = 'start'
+    text = "Hello and let's have a spooky and fun time on this Halloween\n In mood for a game or maybe watching a video?"
+  } else if(ctx.state == 'video') {
     let lookup = {
       'baby-shark': 'https://www.facebook.com/VT/videos/536146063482335/',
       'peppa-pig': 'https://www.facebook.com/CartoonTV001/videos/386102755462742/',
@@ -150,8 +155,41 @@ async function answerMessage(received_message, ctx) {
     ctx.state = 'start'
     return response
   } else if (ctx.state == 'start') {
-    if(text.includes('games')) {
+    if(text.includes('game')) {
       ctx.state = 'twitch'
+      let response =  {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements": [{
+              "title": "It seems like you like those games. Which do you want to watch?",
+              "subtitle": "Tap to choose your video.",
+              "buttons": [
+                {
+                  "type": "postback",
+                  "title": "League of Legends!",
+                  // "title": "A!",
+                  "payload": "lol",
+                },
+                {
+                  "type": "postback",
+                  "title": "Fortnite!",
+                  // "title": "B!",
+                  "payload": "fortnite",
+                },
+                {
+                  "type": "postback",
+                  "title": "PUBG!",
+                  // "title": "C!",
+                  "payload": "pubg",
+                }
+              ],
+            }]
+          }
+        }
+      } 
+      return response
     } else if (text.includes('video')) {
       ctx.state = 'video'
       let response =  {
@@ -160,8 +198,8 @@ async function answerMessage(received_message, ctx) {
           "payload": {
             "template_type": "generic",
             "elements": [{
-              "title": "What kind of video do you want to see?",
-              "subtitle": "Tap a button to answer.",
+              "title": "What should we watch today?",
+              "subtitle": "Tap to choose your video.",
               "buttons": [
                 {
                   "type": "postback",
@@ -187,8 +225,31 @@ async function answerMessage(received_message, ctx) {
     }
 
 
-  } else if (ctx == 'twitch') {
-    text = 'Twitch Context';
+  } else if (ctx.state == 'twitch') {
+    ctx.state = 'twitch_play';
+    let lookup = {
+      'lol':'pel_esports',
+      'fortnite':'riotgames',
+      'pubg':'nickeh30'
+    }
+    let channel = lookup[text];
+    text = channel+'\nIf you wanna send a message to the streamer, just type or send a voice message'
+    request({
+      "uri": "http://localhost:3000/add_twitch?channel="+channel
+    }, (err, res, body) => {
+      if (!err) {
+        console.log('action sent!')
+      } else {
+        console.error("Unable to send message:" + err);
+      }
+    }); 
+  } else if (ctx.state == 'twitch_play') {
+    if(text.includes('bye') || text.includes('leave')) {
+      ctx.state = 'normal'
+      text = 'See ya next time, pal!'
+    } else {
+      text = 'We’ve sent them a pigeon with your message attached. They’ll be receiving the duo shortly.'
+    }
   }
 
 
@@ -211,6 +272,7 @@ function handleMessage(sender_psid, received_message) {
 }
 
 function handlePostback(sender_psid, received_postback) {
+  console.log('Postback');
   sendSenderAction(sender_psid, 'typing_on');
   let payload = received_postback.payload;
   let actualCtx = ctx[sender_psid];
