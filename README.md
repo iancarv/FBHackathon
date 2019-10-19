@@ -51,7 +51,7 @@ The motivation behind using this dataset is twofold.
 1. We could access it from Kaggle.
 2. Since this datset is about the number of hours of playing particular game and purchase behavior, it can help giggly to recomend videos according to user's most played games.
 
-## Model
+## SVD (Singular Value Decomposition) Model for Recommendation 
 
 We mapped the data to a joint latent factor space of dimensionality d*n, such that the user-item interactions are modeled as inner products in the space. Each user is associated with a vector pu Rd and each item is associated with a vector qiRn. For a given game i, the elements of qi measure the extent to which a game was played by users pu. Similarly, for a given user u, the elements of pu measure the extent of interest the user has in the game (in this case we have a binary value: 1 for purchase, 0 for not purchased). The resulting dot product qiTpu captures the interaction between the user u and the game i. We get an approximation of the user u’s rating of a game i which is denoted by: r^ui= qiTpu (1)
 
