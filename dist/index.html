@@ -4,22 +4,44 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <script src="https://embed.twitch.tv/embed/v1.js"></script>
+  <style>
+      body, html {
+  height: 100%;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("giggly.png");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+  </style>
 </head>
 
 <body>
-    <div id="twitch-embed"></div>
+        <div class="bg"><div id="twitch-embed"></div></div>
+    
   <script>
 
   // Extremely simplified here, no error handling or anything
 document.body.onload = function() {
-    var socket = io.connect('ws://cbc77bcc.ngrok.io');
+    var socket = io.connect('ws://3cc6e3c7.ngrok.io');
 
     socket.on("add_twitch", (data) => {
         new Twitch.Embed("twitch-embed", {
-        width: 854,
-        height: 480,
+        width: '100%',
+        height: '100%',
         channel: data.channel
       });
+    })
+    socket.on("exit_twitch", (data) => {
+        $("#twitch-embed").html('')
 	})
 }
   </script>

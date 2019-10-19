@@ -8,6 +8,11 @@ app.get('/add_twitch', (req, res) => {
     res.status(200).send('EVENT_RECEIVED');
 });
 
+app.get('/exit_twitch', (req, res) => {
+    io.sockets.emit('exit_twitch', {channel : 'none'});
+    res.status(200).send('EVENT_RECEIVED');
+});
+
 //Listen on port 3000
 server = app.listen(3000)
 

@@ -6,6 +6,8 @@ const
   
 const fb = require('./fb')
 
+app.use(express.static('dist/public'))
+
 app.use('/', express.static('./dist', {
   index: "index.html"
 }))

@@ -21,6 +21,7 @@
 
 'use strict';
 const request = require('request');
+const twitch = require('./twitch');
 const s2t = require('./s2t')
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
@@ -128,7 +129,7 @@ async function answerMessage(received_message, ctx) {
   console.log('text ' + text);
   if(ctx.state == 'hello') {
     ctx.state = 'start'
-    text = "Hello and let's have a spooky and fun time on this Halloween\n In mood for a game or maybe watching a video?"
+    text = "Hey! Hope you have a spooky and fun time this Halloween! 👻 🎃🎉 \n Are you in the mood for some video game streams or a cool video?"
   } else if(ctx.state == 'video') {
     let lookup = {
       'baby-shark': 'https://www.facebook.com/VT/videos/536146063482335/',
@@ -168,19 +169,19 @@ async function answerMessage(received_message, ctx) {
               "buttons": [
                 {
                   "type": "postback",
-                  "title": "League of Legends!",
+                  "title": "Dota 2!",
                   // "title": "A!",
                   "payload": "lol",
                 },
                 {
                   "type": "postback",
-                  "title": "Fortnite!",
+                  "title": "Team Fortress 2!",
                   // "title": "B!",
                   "payload": "fortnite",
                 },
                 {
                   "type": "postback",
-                  "title": "PUBG!",
+                  "title": "Counter-Strike!",
                   // "title": "C!",
                   "payload": "pubg",
                 }
@@ -228,12 +229,13 @@ async function answerMessage(received_message, ctx) {
   } else if (ctx.state == 'twitch') {
     ctx.state = 'twitch_play';
     let lookup = {
-      'lol':'pel_esports',
-      'fortnite':'riotgames',
-      'pubg':'nickeh30'
+      'lol': 'disaproval',
+      // 'lol':'gorgc',
+      'fortnite':'robtheawsm',
+      'pubg':'esl_csgo'
     }
     let channel = lookup[text];
-    text = channel+'\nIf you wanna send a message to the streamer, just type or send a voice message'
+    text = channel+'\nIf you wanna send a message to the streamer, just type or send a voice message\nTo exit say "bye"'
     request({
       "uri": "http://localhost:3000/add_twitch?channel="+channel
     }, (err, res, body) => {
@@ -242,12 +244,25 @@ async function answerMessage(received_message, ctx) {
       } else {
         console.error("Unable to send message:" + err);
       }
-    }); 
+    });
+    ctx.channel_name = channel
+    ctx.channel = twitch(channel);
   } else if (ctx.state == 'twitch_play') {
-    if(text.includes('bye') || text.includes('leave')) {
-      ctx.state = 'normal'
+    if(text.includes('bye') || text.includes('leave') || text.includes('exit') || text.includes('quit')) {
+      ctx.state = 'start';
+      request({
+        "uri": "http://localhost:3000/exit_twitch"
+      }, (err, res, body) => {
+        if (!err) {
+          console.log('action sent!')
+        } else {
+          console.error("Unable to send message:" + err);
+        }
+      }); 
       text = 'See ya next time, pal!'
+      ctx.channel.disconnect();
     } else {
+      ctx.channel.say(ctx.channel_name, text);
       text = 'We’ve sent them a pigeon with your message attached. They’ll be receiving the duo shortly.'
     }
   }
