@@ -1,4 +1,4 @@
-# [WE DON'T HAVE A HACKATHON] FBHackathon - giggly - Chatbots for giggly kids
+# FBHackathon - giggly - Chatbots for giggly kids
 ## Problem statement
 
 How can we combat the loss of stimulation and empathy that may occur when children become hospitalized, and how do we ensure that their ties with the social world remain intact during their stay at the hospital?
