@@ -57,6 +57,13 @@ module.exports = {
       .map(result => result.alternatives[0].transcript)
       .join('\n');
     console.log(`Transcription: ${transcription}`);
+    try {
+      fs.unlinkSync(fileName);
+      //file removed
+    } catch(err) {
+      console.error(err)
+    }
+    
     return transcription
   }
 }
