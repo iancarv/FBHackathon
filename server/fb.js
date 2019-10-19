@@ -119,7 +119,7 @@ async function answerMessage(received_message, ctx) {
     if (type === 'image') {
       return {'text': "That's a giggly picture!😜🙈"}
     } else if(type === "video") {
-      return {'text': "That's a very cool video. Let's get Giggly"}
+      return {'text': "That's a giggly!😜🙈"}
     }
 
     text = await s2t.convertToText(attachment_url)
@@ -129,7 +129,7 @@ async function answerMessage(received_message, ctx) {
   console.log('text ' + text);
   if(ctx.state == 'hello') {
     ctx.state = 'start'
-    text = "Hey, it's Giggly here!🐒\n\nHope you have a spooky and fun time this Halloween!👻🎃🎉\n\nAre you in the mood for some video game streams or a cool video?"
+    text = "Hey, it's Giggly here!🐒\n\nHope you have a spooky and fun time this Halloween!👻🎃🎉\n\nAre you in the mood for some video game streams or a cool video?\n\nJust say "games" or "video".👍🏻
   } else if(ctx.state == 'video') {
     let lookup = {
       'baby-shark': 'https://www.facebook.com/VT/videos/536146063482335/',
