@@ -8,7 +8,7 @@ How can we combat the loss of stimulation and empathy that may occur when childr
 
 
  
-### Social Good and Entertainment
+### Social Good through Entertainment
 
 Children are always asked the classic question: "What do you want to be when you grow up?" The only thing that our society promises children is their future. We continously draw the younger generation's focus towards what they will be capable of when they reach adulthood, and thus nurture their expectations and dreams about how thrilling their future is going to be. What is society obliged to do, then, when a medical obstacle threatens to not only deter, but uproot those dreams?
 
