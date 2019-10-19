@@ -16,6 +16,24 @@ This is where the core power of Giggly lies: it draws strength from one of the m
 
 Giggly enables child patients across hospitals to keep up with their favorite online trends by enabling them to access platforms, make selections and even comment on live streamings - all from the comfort of their hospital bed. Through implementing Giggly, Facebook will be the catalyst in one of the most crucial periods of affected childrens’ lives. Being at the center of their road to recovery, Facebook will be associated with magically positive memories for years to come. Moreover, this project will launch Facebook to the forefront of the social good revolution, setting a striking example of how giant corporations can and should use their power for good and real human impact.
 
+## System components - Implementation Details
+![Technical Architecture Diagram](FBHackathon.png)
+1. Messenger Bot
+    * Interactions:
+        * Text Messages:
+            - One of ways of interacting with Messenger platform is by setting webhooks so Facebook requests it whenever a new message is received. Our backend received and uses a set of rules to set the context and decide the appropriate response, whether it's to show a video, send a message to the streaming twitcher.
+        * Postback:
+            - We use postback to simplify the interaction to a single tap. By showing the available next steps, we make it easier to kids to use our bot. 
+    * Voice:
+            - In hospital environments, a lot of times children have movement limitations. Adding a voice interface, makes the apple more accessible. Also, everything you do with text can be also done by using the voice.
+    * Submiting/Displaying Media:
+            - One of Facebook key features is the hability to interact with dinamic media such as videos and music. We leverage the Facebook platform to allow children to see a series of videos curated exclusively for kids. Also, the kid can submit videos and pictures using Facebook AR filters. In the future, when Spark AR reaches open beta for Messenger, exclusive effects could be used 
+    * Twitch / WebSockets:
+            - Gaming is big with children and many of then follow streamers frequently. By allowing then to interact with Twitcher using their Messenger app is a innovative feature. The kid can load twitch streams for game and it will dinamically show on our website. In the future, we are planning to build even more integrations bringing more content and integrationg with SmartTVs.  
+2. Recommendation System (SVD Model): 
+
+3. UI
+
 ## Dataset
 
 Steam is the world's most popular PC Gaming hub. With a massive collection that includes everything from AAA blockbusters to small indie titles, great discovery tools can be super valuable for Steam. How can we make them better? This dataset is a list of user behaviors, with columns: user-id, game-title, behavior-name, value. The behaviors included are 'purchase' and 'play'. The value indicates the degree to which the behavior was performed - in the case of 'purchase' the value is always 1, and in the case of 'play' the value represents the number of hours the user has played the game.
@@ -37,11 +55,3 @@ The motivation behind using this dataset is twofold.
 We mapped the data to a joint latent factor space of dimensionality d*n, such that the user-item interactions are modeled as inner products in the space. Each user is associated with a vector pu Rd and each item is associated with a vector qiRn. For a given game i, the elements of qi measure the extent to which a game was played by users pu. Similarly, for a given user u, the elements of pu measure the extent of interest the user has in the game (in this case we have a binary value: 1 for purchase, 0 for not purchased). The resulting dot product qiTpu captures the interaction between the user u and the game i. We get an approximation of the user u’s rating of a game i which is denoted by: r^ui= qiTpu (1)
 
 The model closely represents Singular Value Decomposition. At a high level, SVD is an algorithm that decomposes a matrix M into into two unitary matrices (U and Vt) and a diagonal matrix S: M=USVT (2) where M is user-game purchases matrix, U is the basis matrix, S is the diagonal matrix of singular values (essentially weights), and VT is the “features” matrix. U represents how much users “like” each feature and VT represents how relevant each game is to the user. A sparsification technique is then applied to approximate the rank of matrix M, namely the authors utilized thresholding by parameter “k” on the diagonal matrix S to remove not-meaningful representations. Furthermore the authors tuned the parameter “k” to increase or decrease the number of r user-havioral groups. Then authors recomposed M utilizing equation (2) to obtain final recommendation matrix R.
-
-## System components - Implementation Details
-![Technical Architecture Diagram](FBHackathon.png)
-
-
-1. Messenger Bot
-2. Recommendation System (SVD Model): 
-3. UI
