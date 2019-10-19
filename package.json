@@ -1,0 +1,34 @@
+{
+  "name": "hackathon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/app.js",
+    "dev": "webpack --mode development && node server/app.js",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/speech": "^3.3.1",
+    "child-process": "^1.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-messenger-customer-chat": "^0.7.2",
+    "tmi.js": "^1.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-react": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  }
+}
