@@ -4,7 +4,9 @@
 
 How can we combat the loss of stimulation and empathy that may occur when children become hospitalized, and how do we ensure that their ties with the social world remain intact during their stay at the hospital?
 
-## Business value 
+## Business and social value 
+
+The business value lies within the social good possible through Giggly. Our business value would be the social good provided by the Messenger bot, along with the help of the entertainment organizations involved. - including monetary support from the organizations involved, i.e. Netflix, Spotify etc. Facebook would not only be reaching a very young audience at their early stages in life, but patients would be associating Facebook with very positive memories. Moreover, Facebook will innovate itself through keeping up with the millennial trend of social good projects, thereby securing relevance for a new generation. When the magician can't be there, the magic through the Messenger bot can be. 
 
 ### Social Good through Entertainment
 
