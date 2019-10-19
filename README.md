@@ -1,4 +1,4 @@
-# FBHackathon - giggly - Chatbots for giggly kids
+# FBHackathon - Giggly - Chatbots for giggly kids
 ![Giggly](app_image.jpeg)
 ## Problem statement
 
