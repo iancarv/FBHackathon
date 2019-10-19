@@ -34,6 +34,6 @@ The model closely represents Singular Value Decomposition. At a high level, SVD 
 
 ## System components - Implementation Details
 
-1. Messenger Bot:
+1. Messenger Bot
 2. Recommendation System (SVD Model): 
-3. UI:
+3. UI
