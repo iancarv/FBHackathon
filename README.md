@@ -1,4 +1,4 @@
-# FBHackathon
+# FBHackathon - giggly - Game Recommendation System
 
 ## Problem statement
 
