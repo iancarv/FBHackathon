@@ -6,8 +6,6 @@ How can we combat the loss of stimulation and empathy that may occur when childr
 
 ## Business value 
 
-
- 
 ### Social Good through Entertainment
 
 Children are always asked the classic question: "What do you want to be when you grow up?" The only thing that our society promises children is their future. We continously draw the younger generation's focus towards what they will be capable of when they reach adulthood, and thus nurture their expectations and dreams about how thrilling their future is going to be. What is society obliged to do, then, when a medical obstacle threatens to not only deter, but uproot those dreams?
@@ -32,7 +30,7 @@ This dataset is a list of 200,000 user behaviors, with columns: user-id, game-ti
 The motivation behind using this dataset is twofold.
 
 1. We could access it from Kaggle.
-2. Since this datset is about the number of hours of playing particular game and purchase behavior, it can help giggly to recomend videos according to user's most played game.
+2. Since this datset is about the number of hours of playing particular game and purchase behavior, it can help giggly to recomend videos according to user's most played games.
 
 ## Model
 
