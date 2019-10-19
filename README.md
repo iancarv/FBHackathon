@@ -1,4 +1,4 @@
-# FBHackathon - giggly - Game Recommendation System
+# FBHackathon - giggly - Chatbots for giggly kids using SVD Recommendation System  
 
 ## Problem statement
 
