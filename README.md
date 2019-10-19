@@ -24,7 +24,7 @@ Steam is the world's most popular PC Gaming hub. With a massive collection that 
 
 https://www.kaggle.com/tamber/steam-video-games
 
-![A peek into the data](User's game play.png)
+![A peek into the data]("User's game play.png")
 ![A peek into the data]('A peek into the data')
 
 This dataset is a list of 200,000 user behaviors, with columns: user-id, game-title, behavior-name and play_time.. The behaviors are divided into 'purchase' and 'play', which indicates if the record constitutes to a purchase receipt or user interaction with the game. The play_time feature indicates the degree to which the behavior was performed - in the case of 'purchase' the value is always 1, and in the case of 'play' the value represents the number of hours the user has played the game. There are total 12393 unique user ids and 5155 games. On average Steam purchases 10 games and plays each games at least 48 hours.
