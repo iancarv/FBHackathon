@@ -14,7 +14,9 @@ Children are always asked the classic question: "What do you want to be when you
 
 The struggle of long-term treatment is enough of a burden without the unforeseen stings. Having to place a child outside of the social and psychological community of society, into the confined walls of a hospital room, can have tremendous long-term effects on their wellbeing, perspective and worldview. How do we ensure that children stay confident of their own place and importance within society even if they're physically removed from the scene?
 
-This is where the core power of initiatives such as Giggly lies: it draws strength from one of the most basic human desires - the need to feel the warmth of home. 
+This is where the core power of Giggly lies: it draws strength from one of the most basic human desires - the need to feel safe and at home. Crafting that belonging for children who are hospitalized may appear harder, but Giggly is a kid-friendly platform for them to not only bring their hobbies into their temporary living space but also maintain daily interaction with their friends, family and larger online community. Giggly is capable of deciphering the patient's speech - in accordance with its vision to strive to be accessible! - and play content from websites like Netflix, Spotify, Twitch and Disney+, depending on what the kid prefers at that very moment. 
+
+Giggly 
 
 ## Dataset
 
