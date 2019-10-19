@@ -14,18 +14,18 @@ Children are always asked the classic question: "What do you want to be when you
 
 The struggle of long-term treatment is enough of a burden without the unforeseen stings. Having to place a child outside of the social and psychological community of society, into the confined walls of a hospital room, can have tremendous long-term effects on their wellbeing, perspective and worldview. How do we ensure that children stay confident of their own place and importance within society even if they're physically removed from the scene?
 
-This is where the core power of Giggly lies: it draws strength from one of the most basic human desires - the need to feel safe and at home. Crafting that belonging for children who are hospitalized may appear harder, but Giggly is a kid-friendly platform for them to not only bring their hobbies into their temporary living space but also maintain daily interaction with their friends, family and larger online community. Giggly is capable of deciphering the patient's speech - in accordance with its vision to strive to be accessible! - and play content from websites like Netflix, Spotify, Twitch and Disney+, depending on what the kid prefers at that very moment. 
-
-Giggly 
+This is where the core power of initiatives such as Giggly lies: it draws strength from one of the most basic human desires - the need to feel the warmth of home. 
 
 ## Dataset
 
-Steam is the world's most popular PC Gaming hub. With a massive collection that includes everything from AAA blockbusters to small indie titles, great discovery tools can be super valuable for Steam. How can we make them better?
+Steam is the world's most popular PC Gaming hub. With a massive collection that includes everything from AAA blockbusters to small indie titles, great discovery tools can be super valuable for Steam. How can we make them better? This dataset is a list of user behaviors, with columns: user-id, game-title, behavior-name, value. The behaviors included are 'purchase' and 'play'. The value indicates the degree to which the behavior was performed - in the case of 'purchase' the value is always 1, and in the case of 'play' the value represents the number of hours the user has played the game.
 
-This dataset is a list of user behaviors, with columns: user-id, game-title, behavior-name, value. The behaviors included are 'purchase' and 'play'. The value indicates the degree to which the behavior was performed - in the case of 'purchase' the value is always 1, and in the case of 'play' the value represents the number of hours the user has played the game.
+https://www.kaggle.com/tamber/steam-video-games
+
+This dataset is a list of 200,000 user behaviors, with columns: user-id, game-title, behavior-name and play_time.. The behaviors are divided into 'purchase' and 'play', which indicates if the record constitutes to a purchase receipt or user interaction with the game. The play_time feature indicates the degree to which the behavior was performed - in the case of 'purchase' the value is always 1, and in the case of 'play' the value represents the number of hours the user has played the game. There are total 12393 unique user ids and 5155 games. On average Steam purchases 10 games and plays each games at least 48 hours.
 
 ## System components - Implementation Details
 
 1. Messenger Bot:
-2. Recommendation System (SVD Model):
+2. Recommendation System (SVD Model): 
 3. UI:
