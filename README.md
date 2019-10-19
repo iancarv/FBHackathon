@@ -31,9 +31,8 @@ Giggly enables child patients across hospitals to keep up with their favorite on
             - One of Facebook key features is the hability to interact with dinamic media such as videos and music. We leverage the Facebook platform to allow children to see a series of videos curated exclusively for kids. Also, the kid can submit videos and pictures using Facebook AR filters. In the future, when Spark AR reaches open beta for Messenger, exclusive effects could be used 
     * Twitch / WebSockets:
             - Gaming is big with children and many of then follow streamers frequently. By allowing then to interact with Twitcher using their Messenger app is a innovative feature. The kid can load twitch streams for game and it will dinamically show on our website. In the future, we are planning to build even more integrations bringing more content and integrationg with SmartTVs.  
-2. Recommendation System (SVD Model): 
+2. Recommendation System (SVD Model): The model closely represents Singular Value Decomposition. At a high level, SVD is an algorithm that decomposes a matrix M into into two unitary matrices (U and Vt) and a diagonal matrix S: M=USVT (2) where M is user-game purchases matrix, U is the basis matrix, S is the diagonal matrix of singular values (essentially weights), and VT is the “features” matrix. U represents how much users “like” each feature and VT represents how relevant each game is to the user. A sparsification technique is then applied to approximate the rank of matrix M, namely the authors utilized thresholding by parameter “k” on the diagonal matrix S to remove not-meaningful representations. Furthermore the authors tuned the parameter “k” to increase or decrease the number of r user-havioral groups. Then authors recomposed M utilizing equation (2) to obtain final recommendation matrix R.
 
-3. UI
 
 ## Dataset
 
