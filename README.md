@@ -33,7 +33,7 @@ We mapped the data to a joint latent factor space of dimensionality d*n, such th
 The model closely represents Singular Value Decomposition. At a high level, SVD is an algorithm that decomposes a matrix M into into two unitary matrices (U and Vt) and a diagonal matrix S: M=USVT (2) where M is user-game purchases matrix, U is the basis matrix, S is the diagonal matrix of singular values (essentially weights), and VT is the “features” matrix. U represents how much users “like” each feature and VT represents how relevant each game is to the user. A sparsification technique is then applied to approximate the rank of matrix M, namely the authors utilized thresholding by parameter “k” on the diagonal matrix S to remove not-meaningful representations. Furthermore the authors tuned the parameter “k” to increase or decrease the number of r user-havioral groups. Then authors recomposed M utilizing equation (2) to obtain final recommendation matrix R.
 
 ## System components - Implementation Details
-![Technical Architecture Diagram](link-to-image)
+![Technical Architecture Diagram](FBHackathon.png)
 
 
 1. Messenger Bot
