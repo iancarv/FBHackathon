@@ -2,9 +2,19 @@
 
 ## Problem statement
 
+How can we combat the loss of stimulation and empathy that may occur when children become hospitalized, and how do we ensure that their ties with the social world remain intact during their stay at the hospital?
+
 ## Business value 
+
+
  
- ### 'Social Good & Entertainment'
+### 'Social Good & Entertainment'
+
+Children are always asked the classic question: "What do you want to be when you grow up?" The only thing that our society promises children is their future. We continously draw the younger generation's focus towards what they will be capable of when they reach adulthood, and thus nurture their expectations and dreams about how thrilling their future is going to be. What is society obliged to do, then, when a medical obstacle threatens to not only deter, but uproot those dreams?
+
+The struggle of long-term treatment is enough of a burden without the unforeseen stings. Having to place a child outside of the social and psychological community of society, into the confined walls of a hospital room, can have tremendous long-term effects on their wellbeing, perspective and worldview. How do we ensure that children stay confident of their own place and importance within society even if they're physically removed from the scene?
+
+This is where the core power of initiatives such as Giggly lies: it draws strength from one of the most basic human desires - the need to feel the warmth of home. 
 
 ## Dataset
 
